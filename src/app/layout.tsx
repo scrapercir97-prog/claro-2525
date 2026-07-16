@@ -12,7 +12,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://www.claro-red.app";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://www.claro-red.app");
+
+const OG_IMAGE = {
+  url: "/claro-banner.jpg",
+  secureUrl: `${SITE_URL}/claro-banner.jpg`,
+  width: 1280,
+  height: 720,
+  alt: "Claro Web",
+  type: "image/jpeg",
+};
 
 export const metadata: Metadata = {
   title: "Claro Web | Actualiza tu app",
@@ -33,22 +46,16 @@ export const metadata: Metadata = {
       "Actualiza y gestiona tu app Mi Claro: descarga la última versión y mantén tus servicios siempre al día.",
     url: SITE_URL,
     type: "website",
+    locale: "es",
     siteName: "Claro Web",
-    images: [
-      {
-        url: "/claro-banner.jpg",
-        width: 1280,
-        height: 720,
-        alt: "Claro Web",
-      },
-    ],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Claro Web | Actualiza tu app",
     description:
       "Actualiza y gestiona tu app Mi Claro: descarga la última versión y mantén tus servicios siempre al día.",
-    images: ["/claro-banner.jpg"],
+    images: [OG_IMAGE.secureUrl],
   },
 };
 
