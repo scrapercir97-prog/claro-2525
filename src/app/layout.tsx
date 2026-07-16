@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     siteName: "Claro Web",
     images: [
       {
-        url: new URL("/claro-banner.jpg", SITE_URL).toString(),
-        width: 1200,
-        height: 630,
+        url: "/claro-banner.jpg",
+        width: 1280,
+        height: 720,
         alt: "Claro Web",
       },
     ],
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Claro Web | Actualiza tu app",
     description:
       "Actualiza y gestiona tu app Mi Claro: descarga la última versión y mantén tus servicios siempre al día.",
-    images: [new URL("/claro-banner.jpg", SITE_URL).toString()],
+    images: ["/claro-banner.jpg"],
   },
 };
 
