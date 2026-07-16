@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Claro Web",
     images: [
       {
-        url: new URL("/opengraph-image", SITE_URL).toString(),
+        url: new URL("./../../public/claro-banner.jpg", SITE_URL).toString(),
         width: 1200,
         height: 630,
         alt: "Claro Web",
