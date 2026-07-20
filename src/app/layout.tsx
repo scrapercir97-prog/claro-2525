@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";  // ✅ Funciona porque están en la misma carpeta
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,21 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://www.claro-red.app"); // ⚠️ Asegúrate que esta sea tu URL real
-
-// ✅ CORREGIDO: La imagen debe tener URL absoluta
-const OG_IMAGE = {
-  url: `${SITE_URL}/claro-banner.jpg`, // URL absoluta
-  secureUrl: `${SITE_URL}/claro-banner.jpg`, // URL absoluta
-  width: 1280,
-  height: 720,
-  alt: "Claro Web - Descarga Mi Claro App",
-  type: "image/jpeg",
-};
+// ✅ URL ABSOLUTA Y FIJA - Cambia esto por tu URL real
+const SITE_URL = "https://www.descarga-5g.online";
 
 export const metadata: Metadata = {
   title: "Claro Web | Actualiza tu app",
@@ -51,7 +38,9 @@ export const metadata: Metadata = {
     siteName: "Claro Web",
     images: [
       {
-        url: `${SITE_URL}/claro-banner.jpg`, // ✅ URL absoluta
+        // ✅ URL ABSOLUTA Y COMPLETA
+        url: `${SITE_URL}/claro-banner.jpg`,
+        secureUrl: `${SITE_URL}/claro-banner.jpg`,
         width: 1280,
         height: 720,
         alt: "Claro Web - Descarga Mi Claro App",
@@ -64,12 +53,13 @@ export const metadata: Metadata = {
     title: "Claro Web | Actualiza tu app",
     description:
       "Actualiza y gestiona tu app Mi Claro: descarga la última versión y mantén tus servicios siempre al día.",
-    images: [`${SITE_URL}/claro-banner.jpg`], // ✅ URL absoluta
+    // ✅ URL ABSOLUTA Y COMPLETA
+    images: [`${SITE_URL}/claro-banner.jpg`],
   },
 };
 
 export default function RootLayout({
-children,
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -78,7 +68,7 @@ children,
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}  {/* ✅ CORREGIDO: solo {children} sin el > */}
+        {children}
       </body>
     </html>
   );
