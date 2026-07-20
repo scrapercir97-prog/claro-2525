@@ -12,20 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://www.claro-red.app");
-
-const OG_IMAGE = {
-  url: "/claro-banner.jpg",
-  secureUrl: `${SITE_URL}/claro-banner.jpg`,
-  width: 1280,
-  height: 720,
-  alt: "Claro Web",
-  type: "image/jpeg",
-};
+// ✅ URL ABSOLUTA - Cambia solo si tu dominio es diferente
+const SITE_URL = "https://www.descarga-5g.online";
+// ✅ VERSIÓN DE LA IMAGEN - Cambia este número para forzar actualización
+const IMAGE_VERSION = "v3";
 
 export const metadata: Metadata = {
   title: "Claro Web | Actualiza tu app",
@@ -48,14 +38,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es",
     siteName: "Claro Web",
-    images: [OG_IMAGE],
+    images: [
+      {
+        // ✅ NUEVA RUTA + PARÁMETRO DE VERSIÓN
+        url: `${SITE_URL}/claro-banner-nuevo1.jpg?v=${IMAGE_VERSION}`,
+        secureUrl: `${SITE_URL}/claro-banner-nuevo1.jpg?v=${IMAGE_VERSION}`,
+        width: 1280,
+        height: 720,
+        alt: "Claro Web - Descarga Mi Claro App",
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Claro Web | Actualiza tu app",
     description:
       "Actualiza y gestiona tu app Mi Claro: descarga la última versión y mantén tus servicios siempre al día.",
-    images: [OG_IMAGE.secureUrl],
+    // ✅ NUEVA RUTA + PARÁMETRO DE VERSIÓN
+    images: [`${SITE_URL}/claro-banner-nuevo1.jpg?v=${IMAGE_VERSION}`],
   },
 };
 
