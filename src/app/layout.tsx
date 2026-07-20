@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.css";  // ✅ Funciona porque están en la misma carpeta
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,14 +16,15 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : "https://www.claro-red.app");
+    : "https://www.claro-red.app"); // ⚠️ Asegúrate que esta sea tu URL real
 
+// ✅ CORREGIDO: La imagen debe tener URL absoluta
 const OG_IMAGE = {
-  url: "/claro-banner.jpg",
-  secureUrl: `${SITE_URL}/claro-banner.jpg`,
+  url: `${SITE_URL}/claro-banner.jpg`, // URL absoluta
+  secureUrl: `${SITE_URL}/claro-banner.jpg`, // URL absoluta
   width: 1280,
   height: 720,
-  alt: "Claro Web",
+  alt: "Claro Web - Descarga Mi Claro App",
   type: "image/jpeg",
 };
 
@@ -48,19 +49,27 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es",
     siteName: "Claro Web",
-    images: [OG_IMAGE],
+    images: [
+      {
+        url: `${SITE_URL}/claro-banner.jpg`, // ✅ URL absoluta
+        width: 1280,
+        height: 720,
+        alt: "Claro Web - Descarga Mi Claro App",
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Claro Web | Actualiza tu app",
     description:
       "Actualiza y gestiona tu app Mi Claro: descarga la última versión y mantén tus servicios siempre al día.",
-    images: [OG_IMAGE.secureUrl],
+    images: [`${SITE_URL}/claro-banner.jpg`], // ✅ URL absoluta
   },
 };
 
 export default function RootLayout({
-  children,
+children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -69,7 +78,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {children}  {/* ✅ CORREGIDO: solo {children} sin el > */}
       </body>
     </html>
   );
