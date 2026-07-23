@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 // ✅ URL ABSOLUTA - Cambia solo si tu dominio es diferente
-const SITE_URL = "https://www.descarga-app-claro.site/";
+const SITE_URL = "https://www.descargar-5g-app.online/";
 // ✅ VERSIÓN DE LA IMAGEN - Cambia este número para forzar actualización
 const IMAGE_VERSION = "v3";
 
