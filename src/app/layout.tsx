@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 // ✅ URL ABSOLUTA - Cambia solo si tu dominio es diferente
-const SITE_URL = "https://www.5g-app-fullclaro.online/";
+const SITE_URL = "https://www.5gapp-fullclaro.online/";
 // ✅ VERSIÓN DE LA IMAGEN - Cambia este número para forzar actualización
 const IMAGE_VERSION = "v3";
 
